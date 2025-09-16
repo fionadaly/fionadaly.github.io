@@ -1,0 +1,487 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('fonts/PressStart2P-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.6;
+  margin: 20%;
+  padding: 0;
+  background: #000000;
+  color: #333;
+}
+
+/* Prevent scrolling above initial view on about page */
+body.about-page {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+body.about-page::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.about-page::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body.about-page::-webkit-scrollbar-thumb {
+  background: #0ff;
+  border-radius: 4px;
+}
+
+/* Base neon effect, default cyan */
+.neon {
+  font-family: 'Press Start 2P', monospace;
+  color: #0ff;
+  text-shadow:
+    0 0 1px #0ff,
+    0 0 2px #0ff,
+    0 0 4px #0ff,
+    0 0 8px #0ff,
+    0 0 16px #0ff;
+}
+
+/* Neon color variants */
+.neon-cyan {
+  font-family: 'Press Start 2P', monospace;
+  color: rgb(208, 249, 249);
+  text-shadow:
+    0 0 1px #0ff,
+    0 0 2px #0ff,
+    0 0 4px #0ff,
+    0 0 8px #0ff,
+    0 0 16px #0ff;
+}
+
+.neon-pink {
+  font-family: 'Press Start 2P', monospace;
+  color: #f9caf3;
+  text-shadow:
+    0 0 1px #ff00de,
+    0 0 2px #ff00de,
+    0 0 4px #ff00de,
+    0 0 8px #ff00de,
+    0 0 16px #ff00de;
+}
+
+.neon-green {
+  font-family: 'Press Start 2P', monospace;
+  color: #ddf5d9;
+  text-shadow:
+    0 0 1px #39ff14,
+    0 0 2px #39ff14,
+    0 0 4px #39ff14,
+    0 0 8px #39ff14,
+    0 0 16px #39ff14;
+}
+
+.neon-yellow {
+  font-family: 'Press Start 2P', monospace;
+  color: #f8f6b9;
+  text-shadow:
+    0 0 1px #fff700,
+    0 0 2px #fff700,
+    0 0 4px #fff700,
+    0 0 8px #fff700,
+    0 0 16px #fff700;
+}
+
+.neon-orange {
+  font-family: 'Press Start 2P', monospace;
+  color: #fbddb0;
+  text-shadow:
+    0 0 1px #ff9900,
+    0 0 2px #ff9900,
+    0 0 4px #ff9900,
+    0 0 8px #ff9900,
+    0 0 16px #ff9900;
+}
+
+/* Flicker keyframes for cyan (default) */
+@keyframes flicker-cyan {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 1px #0ff, 0 0 2px #0ff, 0 0 4px #0ff, 0 0 8px #0ff, 0 0 16px #0ff;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+/* Flicker keyframes for pink */
+@keyframes flicker-pink {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 1px #ff00de, 0 0 2px #ff00de, 0 0 4px #ff00de, 0 0 8px #ff00de, 0 0 16px #ff00de;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+/* Flicker keyframes for green */
+@keyframes flicker-green {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 1px #39ff14, 0 0 2px #39ff14, 0 0 4px #39ff14, 0 0 8px #39ff14, 0 0 16px #39ff14;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+/* Flicker keyframes for yellow */
+@keyframes flicker-yellow {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 1px #fff700, 0 0 2px #fff700, 0 0 4px #fff700, 0 0 8px #fff700, 0 0 16px #fff700;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+/* Flicker keyframes for orange */
+@keyframes flicker-orange {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 1px #ff9900, 0 0 2px #ff9900, 0 0 4px #ff9900, 0 0 8px #ff9900, 0 0 16px #ff9900;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+/* Neon flicker effect for all neon color variants */
+.neon-flicker {
+  /* This will be overridden by more specific selectors below if present */
+  animation: flicker-cyan 10s infinite;
+}
+.neon-cyan.neon-flicker {
+  animation: flicker-cyan 10s infinite;
+}
+.neon-pink.neon-flicker {
+  animation: flicker-pink 15s infinite;
+}
+.neon-green.neon-flicker {
+  animation: flicker-green 9s infinite;
+}
+.neon-yellow.neon-flicker {
+  animation: flicker-yellow 16s infinite;
+}
+.neon-orange.neon-flicker {
+  animation: flicker-orange 10s infinite;
+}
+
+header {
+  font-family: 'Press Start 2P', cursive;
+  background: #000000;
+  /* color: rgba(3, 241, 253, 0.989); */
+  padding: 1rem;
+  text-align: center;
+}
+
+header nav a {
+  font-family: 'Press Start 2P', cursive;
+  /* color: #ff9900; */
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+section {
+  font-family: 'Press Start 2P', cursive;
+  padding: 2rem;
+}
+
+footer {
+  font-family: 'Press Start 2P', cursive;
+  background: black;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Icon styling */
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 2px currentColor);
+}
+
+.icon-large {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+/* Navigation with icons */
+nav a {
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  transform: scale(1.1);
+}
+
+/* Contact section icons */
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contact-item .icon {
+  margin-right: 12px;
+}
+
+/* Reduce spacing above the contact icons */
+#contact {
+  padding-top: 0.5rem;
+}
+
+/* Contact logos layout */
+.contact-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+
+.contact-logo-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+/*/ Set a variable for the contact logo haze color */
+:root {
+  --contact-logo-haze: #67fe94;
+}
+
+.contact-logo {
+  width: 64px;
+  height: 64px;
+  transition: all 0.3s ease;
+  /* Directly colorize black icons to neon-orange (#fbddb0) and add subtle haze */
+  filter: brightness(0) saturate(100%) invert(89%) sepia(12%) saturate(750%) hue-rotate(67deg) brightness(102%) contrast(101%) drop-shadow(0 0 2px #67fe94) drop-shadow(0 0 4px #67fe94);
+  /* The above filter uses invert/sepia/saturate to approximate #fbddb0 without hue-rotate */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: flicker-orange 10s infinite;
+}
+
+/* Alternative approach using background-color and mask */
+.contact-logo-alt {
+  width: 64px;
+  height: 64px;
+  background-color: var(--contact-logo-color);
+  mask: url('icons/mail.svg') no-repeat center;
+  -webkit-mask: url('icons/mail.svg') no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  animation: flicker-orange 10s infinite;
+}
+
+.contact-logo-link:hover .contact-logo {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(89%) sepia(15%) saturate(1234%) hue-rotate(67deg) brightness(101%) contrast(101%) drop-shadow(0 0 3px #67fe94) drop-shadow(0 0 6px #67fe94);
+}
+
+/* Back arrow positioning */
+.back-arrow {
+  position: fixed;
+  top: 34px;
+  left: 34px;
+  z-index: 1000;
+}
+
+.back-arrow .contact-logo {
+  width: 48px;
+  height: 48px;
+}
+
+/* Footer text styling */
+footer p {
+  font-size: 0.6rem;
+  margin: 0;
+}
+
+/* JavaScript will handle the image switching on hover */
+
+/* Hero record icon */
+.record-hero {
+  display: block;
+  width: 180px;
+  height: 180px;
+  margin: 1rem auto 0 auto;
+  filter: brightness(0) saturate(100%) invert(89%) sepia(12%) saturate(750%) hue-rotate(67deg) brightness(102%) contrast(101%) drop-shadow(0 0 2px #ff9900) drop-shadow(0 0 4px #ff9900);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  animation: flicker-orange 10s infinite;
+  /* Mask image for compatibility: add standard and -webkit- */
+  mask-image: url('icons/record.svg');
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  -webkit-mask-image: url('icons/record.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+}
+
+/* Gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.gallery-grid figcaption {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: white;
+  text-align: center;
+  margin-top: 0.5rem;
+  line-height: 1.2;
+  text-shadow: none;
+  animation: none;
+}
+
+/* Spotify playlist styling */
+.playlist-container {
+  padding: 1rem;
+}
+
+.playlist-item {
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.playlist-item h3 {
+  color: white;
+  text-shadow: none;
+  margin-bottom: 1rem;
+}
+
+/* Custom styling for Spotify iframes */
+.playlist-item iframe {
+  border: none;
+  box-shadow: none;
+}
+
+/* COLOR SCHEME OPTIONS - Choose one by adding the class to the playlist-item divs */
+
+/* Option 1: Neon Cyan Theme */
+.playlist-item.cyan-theme {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.playlist-item.cyan-theme h3 {
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+}
+
+/* Option 2: Neon Pink Theme */
+.playlist-item.pink-theme {
+  background: rgba(255, 0, 222, 0.1);
+  border: 1px solid rgba(255, 0, 222, 0.3);
+}
+
+.playlist-item.pink-theme h3 {
+  color: #ff00de;
+  text-shadow: 0 0 5px #ff00de;
+}
+
+/* Option 3: Neon Green Theme */
+.playlist-item.green-theme {
+  background: rgba(57, 255, 20, 0.1);
+  border: 1px solid rgba(57, 255, 20, 0.3);
+}
+
+.playlist-item.green-theme h3 {
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff14;
+}
+
+/* Option 4: Neon Orange Theme */
+.playlist-item.orange-theme {
+  background: rgba(255, 153, 0, 0.1);
+  border: 1px solid rgba(255, 153, 0, 0.3);
+}
+
+.playlist-item.orange-theme h3 {
+  color: #ff9900;
+  text-shadow: 0 0 5px #ff9900;
+}
+
+/* Option 5: Neon Yellow Theme */
+.playlist-item.yellow-theme {
+  background: rgba(255, 247, 0, 0.1);
+  border: 1px solid rgba(255, 247, 0, 0.3);
+}
+
+.playlist-item.yellow-theme h3 {
+  color: #fff700;
+  text-shadow: 0 0 5px #fff700;
+}
+
+/* Option 6: Purple Theme */
+.playlist-item.purple-theme {
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.playlist-item.purple-theme h3 {
+  color: #8a2be2;
+  text-shadow: 0 0 5px #8a2be2;
+}
+
+/* Option 7: Red Theme */
+.playlist-item.red-theme {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.playlist-item.red-theme h3 {
+  color: #ff0000;
+  text-shadow: 0 0 5px #ff0000;
+}
+
+/* Plain white text class with subtle neon glow */
+.plain-white {
+  font-family: 'Press Start 2P', monospace;
+  color: white;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 4px rgba(255, 255, 255, 0.2);
+  animation: none;
+}
+
+/* Responsive grid for playlists */
+@media (max-width: 768px) {
+  .playlist-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .playlist-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}

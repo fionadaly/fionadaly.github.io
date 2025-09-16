@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Portfolio</title>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiona Daly</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <h1>Hello, I'm Your Name</h1>
-  <p>Welcome to my portfolio website!</p>
+<body class="neon-orange neon-flicker" style="min-height: 100vh; min-width: 100vw; margin: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw;">
+    <header>
+      <p>Hello, I'm</p>
+      <h1>Fiona Daly</h1>
+      <nav class="neon-pink neon-flicker">
+        <a href="about.html" class="neon-pink neon-flicker">About</a>
+        <a href="radio.html" class="neon-pink neon-flicker">Radio</a>
+        <a href="contact.html" class="neon-pink neon-flicker">Contact</a>
+      </nav>
+    </header>
+    
+    <section id="contact" class="neon-orange neon-flicker">
+      <div class="contact-logos">
+        <a href="mailto:fionad@mit.edu" class="contact-logo-link">
+          <img src="icons/mail.svg" alt="Email" class="contact-logo">
+        </a>
+        <a href="https://github.com/fionadaly" target="_blank" class="contact-logo-link">
+          <img src="icons/github.svg" alt="GitHub" class="contact-logo">
+        </a>
+        <a href="https://www.linkedin.com/in/fiona-daly-661304275/" target="_blank" class="contact-logo-link">
+          <img src="icons/linkedin.svg" alt="LinkedIn" class="contact-logo">
+        </a>
+      </div>
+    </section>
+
+    <footer class="neon-yellow neon-flicker">
+      <p>&copy; 2025 Fiona Daly</p>
+    </footer>
+  </div>
 </body>
 </html>
