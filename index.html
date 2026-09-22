@@ -3,38 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="icons/tinyphone.jpg" type="image/jpeg" />
   <title>Fiona Daly</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="neon-orange neon-flicker" style="min-height: 100vh; min-width: 100vw; margin: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100vw;">
-    <header>
-      <p>Hello, I'm</p>
-      <h1>Fiona Daly</h1>
-      <nav class="neon-pink neon-flicker">
-        <a href="about.html" class="neon-pink neon-flicker">About</a>
-        <a href="radio.html" class="neon-pink neon-flicker">Radio</a>
-        <a href="contact.html" class="neon-pink neon-flicker">Contact</a>
-      </nav>
-    </header>
-    
-    <section id="contact" class="neon-orange neon-flicker">
-      <div class="contact-logos">
-        <a href="mailto:fionad@mit.edu" class="contact-logo-link">
-          <img src="icons/mail.svg" alt="Email" class="contact-logo">
-        </a>
-        <a href="https://github.com/fionadaly" target="_blank" class="contact-logo-link">
-          <img src="icons/github.svg" alt="GitHub" class="contact-logo">
-        </a>
-        <a href="https://www.linkedin.com/in/fiona-daly-661304275/" target="_blank" class="contact-logo-link">
-          <img src="icons/linkedin.svg" alt="LinkedIn" class="contact-logo">
-        </a>
-      </div>
-    </section>
+<body>
+  <main class="scene">
+    <img
+      class="scene-image"
+      src="backgrounds/pexels-kviteli-10979550.jpg"
+      alt="A wall-mounted phone booth. The keypad and the note on the map can be used."
+    />
+    <button
+      type="button"
+      class="hotspot hotspot-keypad"
+      data-open="keypad-modal"
+      aria-label="Open the phone keypad"
+    ></button>
+    <div
+      class="sticky-note"
+      data-open="note-modal"
+      role="button"
+      tabindex="0"
+      aria-label="Read the note on the booth"
+    >
+      <span class="sticky-note-scribble" aria-hidden="true">READ ME</span>
+    </div>
+    <div class="booth-sticker sticker-coffee">
+      <img src="icons/stickers/coffee.png" alt="Coffee cup sticker">
+    </div>
+    <div class="booth-sticker sticker-haus">
+      <img src="icons/stickers/senior haus.jpg" alt="Senior Haus sticker">
+    </div>
+    <div class="booth-sticker sticker-wmbr">
+      <img src="icons/stickers/wmbr.png" alt="WMBR sticker">
+    </div>
+    <div class="booth-sticker sticker-klein">
+      <img src="icons/stickers/klein.png" alt="Klein bottle sticker">
+    </div>
+    <div
+      class="music-sticker"
+      id="music-sticker"
+      role="button"
+      tabindex="0"
+      aria-pressed="false"
+      aria-label="Play elevator music"
+    >
+      <img src="icons/speakerphone.png" alt="">
+    </div>
+  </main>
 
-    <footer class="neon-yellow neon-flicker">
-      <p>&copy; 2025 Fiona Daly</p>
-    </footer>
-  </div>
+  <audio id="elevator-music" src="music/mfcc-lounge-jazz-elevator-music-372734.mp3" loop preload="auto"></audio>
+
+  <dialog id="keypad-modal" class="modal keypad-modal" aria-label="Phone keypad">
+    <div class="modal-card">
+      <div class="modal-toolbar">
+        <button type="button" class="modal-close" data-close aria-label="Close keypad">x</button>
+      </div>
+      <p id="keypad-readout" class="keypad-readout" aria-live="polite"></p>
+      <div class="keypad-stage">
+        <img
+          src="backgrounds/pexels-benoit-roy-1445513124-29435052.jpg"
+          alt=""
+        />
+        <div class="keypad-keys" role="group" aria-label="Phone keypad">
+          <button type="button" class="key" data-key="1" aria-label="1"></button>
+          <button type="button" class="key" data-key="2" aria-label="2"></button>
+          <button type="button" class="key" data-key="3" aria-label="3"></button>
+          <button type="button" class="key" data-key="4" aria-label="4"></button>
+          <button type="button" class="key" data-key="5" aria-label="5"></button>
+          <button type="button" class="key" data-key="6" aria-label="6"></button>
+          <button type="button" class="key" data-key="7" aria-label="7"></button>
+          <button type="button" class="key" data-key="8" aria-label="8"></button>
+          <button type="button" class="key" data-key="9" aria-label="9"></button>
+          <button type="button" class="key" data-key="*" aria-label="Clear"></button>
+          <button type="button" class="key" data-key="0" aria-label="0"></button>
+          <button type="button" class="key" data-key="#" aria-label="Pound"></button>
+        </div>
+      </div>
+      <button type="button" class="keypad-clear" id="keypad-clear">Clear</button>
+    </div>
+  </dialog>
+
+  <dialog id="note-modal" class="modal note-modal" aria-labelledby="note-title">
+    <button type="button" class="modal-close note-close" data-close aria-label="Close note">x</button>
+    <h2 id="note-title">Hello, I'm Fiona Daly.</h2>
+    <p>Dial an extension on the keypad.</p>
+    <ul class="note-list">
+      <li><span>314</span> About</li>
+      <li><span>271</span> Projects</li>
+      <li><span>567</span> Linkedin</li>
+    </ul>
+  </dialog>
+
+  <script src="keypad.js"></script>
 </body>
 </html>

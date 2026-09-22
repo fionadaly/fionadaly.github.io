@@ -1,356 +1,346 @@
+/* Font */
+
 @font-face {
   font-family: 'Press Start 2P';
-  src: url('fonts/PressStart2P-Regular.ttf') format('truetype');
+  src: url('fonts/Silkscreen/Silkscreen-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
+/* Colors and shared settings */
+
+:root {
+  --font-main: 'Press Start 2P', monospace;
+
+  --cyan: rgb(196, 202, 248);
+  --cyan-shadow: #1f51ff;
+  --pink: #f9cad2;
+  --pink-shadow: #ff0011;
+  --yellow: #f8f6b9;
+  --yellow-shadow: #fff700;
+  --orange: #fbddb0;
+  --orange-shadow: #ff9900;
+
+  /* About page photo. Change this path to swap the picture. */
+  --about-background: url("backgrounds/about_bg.jpg");
+  /* Higher blur is softer. Higher white (0 to 1) is lighter. */
+  --about-bg-blur: 1px;
+  --about-bg-white: 0.1;
+
+  /* Picture frame. Change these two lines for thickness and color. */
+  --photo-border-width: 3px;
+  --photo-border-color: #000000;
+}
+
+/* Page base */
+
 body {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-main);
   line-height: 1.6;
-  margin: 20%;
+  margin: 0;
   padding: 0;
   background: #000000;
   color: #333;
 }
 
-/* Prevent scrolling above initial view on about page */
-body.about-page {
+body.inner-page {
+  min-height: 100vh;
+  overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
 }
 
-body.about-page::-webkit-scrollbar {
+body.inner-page::-webkit-scrollbar {
   width: 8px;
 }
 
-body.about-page::-webkit-scrollbar-track {
+body.inner-page::-webkit-scrollbar-track {
   background: #000;
 }
 
-body.about-page::-webkit-scrollbar-thumb {
-  background: #0ff;
+body.inner-page::-webkit-scrollbar-thumb {
+  background: var(--cyan-shadow);
   border-radius: 4px;
 }
 
-/* Base neon effect, default cyan */
-.neon {
-  font-family: 'Press Start 2P', monospace;
-  color: #0ff;
-  text-shadow:
-    0 0 1px #0ff,
-    0 0 2px #0ff,
-    0 0 4px #0ff,
-    0 0 8px #0ff,
-    0 0 16px #0ff;
-}
-
-/* Neon color variants */
-.neon-cyan {
-  font-family: 'Press Start 2P', monospace;
-  color: rgb(208, 249, 249);
-  text-shadow:
-    0 0 1px #0ff,
-    0 0 2px #0ff,
-    0 0 4px #0ff,
-    0 0 8px #0ff,
-    0 0 16px #0ff;
-}
-
-.neon-pink {
-  font-family: 'Press Start 2P', monospace;
-  color: #f9caf3;
-  text-shadow:
-    0 0 1px #ff00de,
-    0 0 2px #ff00de,
-    0 0 4px #ff00de,
-    0 0 8px #ff00de,
-    0 0 16px #ff00de;
-}
-
-.neon-green {
-  font-family: 'Press Start 2P', monospace;
-  color: #ddf5d9;
-  text-shadow:
-    0 0 1px #39ff14,
-    0 0 2px #39ff14,
-    0 0 4px #39ff14,
-    0 0 8px #39ff14,
-    0 0 16px #39ff14;
-}
-
-.neon-yellow {
-  font-family: 'Press Start 2P', monospace;
-  color: #f8f6b9;
-  text-shadow:
-    0 0 1px #fff700,
-    0 0 2px #fff700,
-    0 0 4px #fff700,
-    0 0 8px #fff700,
-    0 0 16px #fff700;
-}
-
-.neon-orange {
-  font-family: 'Press Start 2P', monospace;
-  color: #fbddb0;
-  text-shadow:
-    0 0 1px #ff9900,
-    0 0 2px #ff9900,
-    0 0 4px #ff9900,
-    0 0 8px #ff9900,
-    0 0 16px #ff9900;
-}
-
-/* Flicker keyframes for cyan (default) */
-@keyframes flicker-cyan {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow: 0 0 1px #0ff, 0 0 2px #0ff, 0 0 4px #0ff, 0 0 8px #0ff, 0 0 16px #0ff;
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
-}
-
-/* Flicker keyframes for pink */
-@keyframes flicker-pink {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow: 0 0 1px #ff00de, 0 0 2px #ff00de, 0 0 4px #ff00de, 0 0 8px #ff00de, 0 0 16px #ff00de;
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
-}
-
-/* Flicker keyframes for green */
-@keyframes flicker-green {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow: 0 0 1px #39ff14, 0 0 2px #39ff14, 0 0 4px #39ff14, 0 0 8px #39ff14, 0 0 16px #39ff14;
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
-}
-
-/* Flicker keyframes for yellow */
-@keyframes flicker-yellow {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow: 0 0 1px #fff700, 0 0 2px #fff700, 0 0 4px #fff700, 0 0 8px #fff700, 0 0 16px #fff700;
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
-}
-
-/* Flicker keyframes for orange */
-@keyframes flicker-orange {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    text-shadow: 0 0 1px #ff9900, 0 0 2px #ff9900, 0 0 4px #ff9900, 0 0 8px #ff9900, 0 0 16px #ff9900;
-  }
-  20%, 24%, 55% {
-    text-shadow: none;
-  }
-}
-
-/* Neon flicker effect for all neon color variants */
-.neon-flicker {
-  /* This will be overridden by more specific selectors below if present */
-  animation: flicker-cyan 10s infinite;
-}
-.neon-cyan.neon-flicker {
-  animation: flicker-cyan 10s infinite;
-}
-.neon-pink.neon-flicker {
-  animation: flicker-pink 15s infinite;
-}
-.neon-green.neon-flicker {
-  animation: flicker-green 9s infinite;
-}
-.neon-yellow.neon-flicker {
-  animation: flicker-yellow 16s infinite;
-}
-.neon-orange.neon-flicker {
-  animation: flicker-orange 10s infinite;
-}
-
 header {
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-main);
   background: #000000;
-  /* color: rgba(3, 241, 253, 0.989); */
   padding: 1rem;
   text-align: center;
 }
 
-header nav a {
-  font-family: 'Press Start 2P', cursive;
-  /* color: #ff9900; */
-  margin: 0 10px;
-  text-decoration: none;
+.page-header {
+  padding-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 section {
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-main);
   padding: 2rem;
 }
 
+.section-centered {
+  text-align: center;
+}
+
 footer {
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-main);
   background: black;
   padding: 1rem;
   text-align: center;
 }
 
-/* Icon styling */
-.icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  vertical-align: middle;
-  filter: drop-shadow(0 0 2px currentColor);
-}
-
-.icon-large {
-  width: 32px;
-  height: 32px;
-  margin-right: 12px;
-}
-
-/* Navigation with icons */
-nav a {
-  display: inline-flex;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-nav a:hover {
-  transform: scale(1.1);
-}
-
-/* Contact section icons */
-.contact-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.contact-item .icon {
-  margin-right: 12px;
-}
-
-/* Reduce spacing above the contact icons */
-#contact {
-  padding-top: 0.5rem;
-}
-
-/* Contact logos layout */
-.contact-logos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem;
-}
-
-
-.contact-logo-link {
-  display: inline-block;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-/*/ Set a variable for the contact logo haze color */
-:root {
-  --contact-logo-haze: #67fe94;
-}
-
-.contact-logo {
-  width: 64px;
-  height: 64px;
-  transition: all 0.3s ease;
-  /* Directly colorize black icons to neon-orange (#fbddb0) and add subtle haze */
-  filter: brightness(0) saturate(100%) invert(89%) sepia(12%) saturate(750%) hue-rotate(67deg) brightness(102%) contrast(101%) drop-shadow(0 0 2px #67fe94) drop-shadow(0 0 4px #67fe94);
-  /* The above filter uses invert/sepia/saturate to approximate #fbddb0 without hue-rotate */
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  animation: flicker-orange 10s infinite;
-}
-
-/* Alternative approach using background-color and mask */
-.contact-logo-alt {
-  width: 64px;
-  height: 64px;
-  background-color: var(--contact-logo-color);
-  mask: url('icons/mail.svg') no-repeat center;
-  -webkit-mask: url('icons/mail.svg') no-repeat center;
-  mask-size: contain;
-  -webkit-mask-size: contain;
-  animation: flicker-orange 10s infinite;
-}
-
-.contact-logo-link:hover .contact-logo {
-  transform: scale(1.1);
-  filter: brightness(0) saturate(100%) invert(89%) sepia(15%) saturate(1234%) hue-rotate(67deg) brightness(101%) contrast(101%) drop-shadow(0 0 3px #67fe94) drop-shadow(0 0 6px #67fe94);
-}
-
-/* Back arrow positioning */
-.back-arrow {
-  position: fixed;
-  top: 34px;
-  left: 34px;
-  z-index: 1000;
-}
-
-.back-arrow .contact-logo {
-  width: 48px;
-  height: 48px;
-}
-
-/* Footer text styling */
 footer p {
   font-size: 0.6rem;
   margin: 0;
 }
 
-/* JavaScript will handle the image switching on hover */
-
-/* Hero record icon */
-.record-hero {
-  display: block;
-  width: 180px;
-  height: 180px;
-  margin: 1rem auto 0 auto;
-  filter: brightness(0) saturate(100%) invert(89%) sepia(12%) saturate(750%) hue-rotate(67deg) brightness(102%) contrast(101%) drop-shadow(0 0 2px #ff9900) drop-shadow(0 0 4px #ff9900);
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  animation: flicker-orange 10s infinite;
-  /* Mask image for compatibility: add standard and -webkit- */
-  mask-image: url('icons/record.svg');
-  mask-repeat: no-repeat;
-  mask-size: cover;
-  -webkit-mask-image: url('icons/record.svg');
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: cover;
+.plain-white {
+  font-family: var(--font-main);
+  color: white;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 4px rgba(255, 255, 255, 0.2);
+  animation: none;
 }
 
-/* Gallery grid */
+/* Neon text */
+
+.neon-cyan,
+.neon-pink,
+.neon-yellow,
+.neon-orange {
+  font-family: var(--font-main);
+  color: var(--neon-color);
+  text-shadow:
+    0 0 1px var(--neon-shadow),
+    0 0 2px var(--neon-shadow),
+    0 0 4px var(--neon-shadow),
+    0 0 8px var(--neon-shadow),
+    0 0 16px var(--neon-shadow);
+}
+
+.neon-cyan {
+  --neon-color: var(--cyan);
+  --neon-shadow: var(--cyan-shadow);
+}
+
+.neon-pink {
+  --neon-color: var(--pink);
+  --neon-shadow: var(--pink-shadow);
+}
+
+.neon-yellow {
+  --neon-color: var(--yellow);
+  --neon-shadow: var(--yellow-shadow);
+}
+
+.neon-orange {
+  --neon-color: var(--orange);
+  --neon-shadow: var(--orange-shadow);
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 1px var(--neon-shadow),
+      0 0 2px var(--neon-shadow),
+      0 0 4px var(--neon-shadow),
+      0 0 8px var(--neon-shadow),
+      0 0 16px var(--neon-shadow);
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+.neon-flicker {
+  animation: flicker 10s infinite;
+}
+
+.neon-pink.neon-flicker {
+  animation-duration: 15s;
+}
+
+.neon-yellow.neon-flicker {
+  animation-duration: 16s;
+}
+
+/* Back arrow, shared by the inner pages */
+
+.back-arrow {
+  position: fixed;
+  top: 34px;
+  left: 34px;
+  z-index: 1000;
+  font-size: 1.5rem;
+  line-height: 1;
+  text-decoration: none;
+  --neon-shadow: var(--pink-shadow);
+  color: var(--pink);
+  text-shadow:
+    0 0 1px var(--pink-shadow),
+    0 0 2px var(--pink-shadow),
+    0 0 4px var(--pink-shadow),
+    0 0 8px var(--pink-shadow),
+    0 0 16px var(--pink-shadow);
+  animation: flicker 10s infinite;
+}
+
+/* About */
+
+body.about-page {
+  position: relative;
+  z-index: 0;
+  background: transparent;
+}
+
+body.about-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255, 255, 255, var(--about-bg-white)), rgba(255, 255, 255, var(--about-bg-white))),
+    var(--about-background) center / cover no-repeat;
+  filter: blur(var(--about-bg-blur));
+  transform: scale(1.08);
+}
+
+body.about-page header {
+  background: transparent;
+}
+
+body.about-page .page-header,
+body.about-page #about {
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.about-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.about-intro-text {
+  flex: 1;
+  max-width: 28rem;
+  margin: 0;
+  color: #000000;
+  font-size: 1.3rem;
+  text-align: left;
+  text-shadow: none;
+  animation: none;
+  line-height: 2.2;
+}
+
+body.about-page h2 {
+  font-size: 3.0rem;
+}
+
+.about-photo-slot {
+  height: 320px;
+  width: 320px;
+  flex: 0 0 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  box-sizing: border-box;
+  border: var(--photo-border-width) solid var(--photo-border-color);
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+.about-bio {
+  flex: 1;
+  text-align: center;
+}
+
+body.about-page .plain-white,
+body.about-page .gallery-grid figcaption {
+  color: #000000;
+  text-shadow: none;
+  animation: none;
+}
+
+body.about-page h1 {
+  --neon-shadow: var(--cyan-shadow);
+  color: var(--cyan);
+  text-shadow:
+    0 0 1px var(--cyan-shadow),
+    0 0 2px var(--cyan-shadow),
+    0 0 4px var(--cyan-shadow),
+    0 0 8px var(--cyan-shadow),
+    0 0 16px var(--cyan-shadow);
+  animation: flicker 10s infinite;
+}
+
+.about-bio p {
+  line-height: 2.2;
+}
+
+.interests-label {
+  font-size: 1.1rem;
+  text-align: left;
+  padding-top: 0;
+  margin: 1.5rem auto 0 auto;
+}
+
+.interests-list {
+  list-style-type: disc;
+  display: inline-block;
+  text-align: left;
+  margin: 1.5rem auto 0 auto;
+  padding-left: 2.5em;
+  font-size: 1.1rem;
+  line-height: 2.2;
+}
+
+/* Gallery */
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   align-items: start;
+  margin: 0 auto 1rem auto;
+  max-width: 1000px;
 }
 
 .gallery-grid img {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 0;
+  box-sizing: border-box;
+  border: var(--photo-border-width) solid var(--photo-border-color);
 }
 
 .gallery-grid figcaption {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  color: white;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  color: #000000;
   text-align: center;
   margin-top: 0.5rem;
   line-height: 1.2;
@@ -358,12 +348,48 @@ footer p {
   animation: none;
 }
 
-/* Spotify playlist styling */
+/* Music */
+
+.radio-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radio-welcome {
+  margin-bottom: 100px;
+}
+
+.radio-title {
+  font-size: 10rem;
+  line-height: 1.1;
+  letter-spacing: 0.5em;
+  margin-top: 0;
+}
+
+#playlists {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#playlists h2 {
+  color: white;
+  font-family: var(--font-main);
+  margin-bottom: 1rem;
+}
+
 .playlist-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 1rem;
 }
 
 .playlist-item {
+  width: 100%;
   background: rgba(0, 0, 0, 0.3);
   border: none;
   border-radius: 12px;
@@ -372,116 +398,104 @@ footer p {
   transition: all 0.3s ease;
 }
 
-.playlist-item h3 {
-  color: white;
-  text-shadow: none;
-  margin-bottom: 1rem;
-}
-
-/* Custom styling for Spotify iframes */
 .playlist-item iframe {
   border: none;
   box-shadow: none;
+  border-radius: 12px;
+  width: 100%;
+  height: 400px;
 }
 
-/* COLOR SCHEME OPTIONS - Choose one by adding the class to the playlist-item divs */
+/* Projects */
 
-/* Option 1: Neon Cyan Theme */
-.playlist-item.cyan-theme {
-  background: rgba(0, 255, 255, 0.1);
-  border: 1px solid rgba(0, 255, 255, 0.3);
+.project {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
 
-.playlist-item.cyan-theme h3 {
-  color: #0ff;
-  text-shadow: 0 0 5px #0ff;
-}
-
-/* Option 2: Neon Pink Theme */
-.playlist-item.pink-theme {
-  background: rgba(255, 0, 222, 0.1);
-  border: 1px solid rgba(255, 0, 222, 0.3);
-}
-
-.playlist-item.pink-theme h3 {
-  color: #ff00de;
-  text-shadow: 0 0 5px #ff00de;
-}
-
-/* Option 3: Neon Green Theme */
-.playlist-item.green-theme {
-  background: rgba(57, 255, 20, 0.1);
-  border: 1px solid rgba(57, 255, 20, 0.3);
-}
-
-.playlist-item.green-theme h3 {
-  color: #39ff14;
-  text-shadow: 0 0 5px #39ff14;
-}
-
-/* Option 4: Neon Orange Theme */
-.playlist-item.orange-theme {
-  background: rgba(255, 153, 0, 0.1);
-  border: 1px solid rgba(255, 153, 0, 0.3);
-}
-
-.playlist-item.orange-theme h3 {
-  color: #ff9900;
-  text-shadow: 0 0 5px #ff9900;
-}
-
-/* Option 5: Neon Yellow Theme */
-.playlist-item.yellow-theme {
-  background: rgba(255, 247, 0, 0.1);
-  border: 1px solid rgba(255, 247, 0, 0.3);
-}
-
-.playlist-item.yellow-theme h3 {
-  color: #fff700;
-  text-shadow: 0 0 5px #fff700;
-}
-
-/* Option 6: Purple Theme */
-.playlist-item.purple-theme {
-  background: rgba(138, 43, 226, 0.1);
-  border: 1px solid rgba(138, 43, 226, 0.3);
-}
-
-.playlist-item.purple-theme h3 {
-  color: #8a2be2;
-  text-shadow: 0 0 5px #8a2be2;
-}
-
-/* Option 7: Red Theme */
-.playlist-item.red-theme {
-  background: rgba(255, 0, 0, 0.1);
-  border: 1px solid rgba(255, 0, 0, 0.3);
-}
-
-.playlist-item.red-theme h3 {
-  color: #ff0000;
-  text-shadow: 0 0 5px #ff0000;
-}
-
-/* Plain white text class with subtle neon glow */
-.plain-white {
-  font-family: 'Press Start 2P', monospace;
-  color: white;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 4px rgba(255, 255, 255, 0.2);
+body.about-page .project h2 {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+  color: #000000;
+  text-shadow: none;
   animation: none;
 }
 
-/* Responsive grid for playlists */
+.project p {
+  margin: 0;
+  line-height: 2.2;
+}
+
+.project-pdf {
+  display: block;
+  width: 100%;
+  height: 70vh;
+  min-height: 420px;
+  margin-top: 1.5rem;
+  overflow: auto;
+  border: var(--photo-border-width) solid var(--photo-border-color);
+  background: #ffffff;
+}
+
+.project-pdf canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-pdf-link {
+  display: inline-block;
+  margin: 1rem;
+  color: #000000;
+}
+
+.project-photo-slot {
+  width: min(100%, 480px);
+  margin: 0 0 1.5rem;
+  border: var(--photo-border-width) solid var(--photo-border-color);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.project-photo-slot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Narrow screens */
+
 @media (max-width: 768px) {
-  .playlist-container {
+  .about-intro {
+    flex-direction: column;
+  }
+
+  .about-photo-slot {
+    flex-basis: auto;
+    max-width: 100%;
+  }
+
+  .playlist-container,
+  .gallery-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .radio-title {
+    font-size: 3.5rem;
+    letter-spacing: 0.2em;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .playlist-container {
+  .playlist-container,
+  .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
+  }
+
+  .radio-title {
+    font-size: 6rem;
   }
 }
